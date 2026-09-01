@@ -1007,3 +1007,144 @@ h1, h2, h3, h4 {
         text-align: center;
     }
 }
+
+/* ==================== RECENSIONI ==================== */
+.reviews-section {
+    background-color: var(--color-bg-secondary);
+    border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.reviews-carousel-wrapper {
+    position: relative;
+    overflow: hidden;
+    padding: 0 48px; /* spazio per i bottoni */
+}
+
+.reviews-carousel {
+    display: flex;
+    gap: var(--spacing-md);
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    padding: 8px 0 16px;
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE/Edge */
+}
+
+.reviews-carousel::-webkit-scrollbar {
+    display: none; /* Chrome/Safari */
+}
+
+.review-card {
+    flex: 0 0 320px; /* larghezza fissa, modificabile */
+    min-height: 220px;
+    background-color: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    padding: var(--spacing-md);
+    display: flex;
+    flex-direction: column;
+    scroll-snap-align: start;
+    transition: transform var(--transition), box-shadow var(--transition);
+}
+
+.review-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-card);
+}
+
+.review-stars {
+    color: var(--color-accent);
+    font-size: 1rem;
+    margin-bottom: var(--spacing-sm);
+    letter-spacing: 2px;
+}
+
+.review-text {
+    color: var(--color-text);
+    font-size: 0.95rem;
+    line-height: 1.7;
+    flex-grow: 1;
+    margin-bottom: var(--spacing-sm);
+    font-style: italic;
+}
+
+.review-author {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--spacing-xs);
+    flex-wrap: wrap;
+}
+
+.author-name {
+    font-weight: 700;
+    color: var(--color-text);
+    font-size: 0.9rem;
+}
+
+.author-role {
+    color: var(--color-text-muted);
+    font-size: 0.8rem;
+}
+
+/* Bottoni carosello */
+.carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: rgba(10, 10, 10, 0.8);
+    border: 1px solid var(--color-border);
+    color: var(--color-text);
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+    transition: all var(--transition);
+}
+
+.carousel-btn:hover {
+    background-color: var(--color-accent);
+    color: #0A0A0A;
+    border-color: var(--color-accent);
+}
+
+.carousel-btn.prev {
+    left: 8px;
+}
+
+.carousel-btn.next {
+    right: 8px;
+}
+
+/* Responsive per bottoni */
+@media (max-width: 768px) {
+    .reviews-carousel-wrapper {
+        padding: 0 32px;
+    }
+    .review-card {
+        flex: 0 0 280px;
+    }
+    .carousel-btn {
+        width: 32px;
+        height: 32px;
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .reviews-carousel-wrapper {
+        padding: 0 28px;
+    }
+    .review-card {
+        flex: 0 0 260px;
+        padding: var(--spacing-sm);
+    }
+}
